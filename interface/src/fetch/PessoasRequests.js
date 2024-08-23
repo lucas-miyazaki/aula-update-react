@@ -1,6 +1,6 @@
 class PessoasRequests {
     constructor() {
-        this.serverUrl = 'http://localhost:3000';
+        this.serverUrl = 'http://localhost:3333';
         this.routeCadastrarPessoa = '/cadastro';
         this.routeListarPessoas = '/pessoas';
         this.routeRemoverPessoa = '/deletar';
@@ -80,7 +80,7 @@ class PessoasRequests {
             return true;
         } catch (error) {
             console.error('Erro: ', error);
-            window.alert('Erro ao atualizar aluno');
+            window.alert('Erro ao atualizar pessoa');
             return null;
         }
     }

@@ -4,9 +4,11 @@ import ListaPessoasUtil from "./ListaPessoasUtil";
 import { FaTrashCan } from "react-icons/fa6";
 import { AiFillEdit } from "react-icons/ai";
 import style from './ListaPessoas.module.css';
+import { useNavigate } from 'react-router-dom';
 
 function ListaPessoas() {
     const [pessoas, setPessoas] = useState([]);
+    const navigate = useNavigate();
     const util = new ListaPessoasUtil();
 
     useEffect(() => {
@@ -22,9 +24,12 @@ function ListaPessoas() {
         fetchPessoas();
     }, []);
 
-    const atualizar = () => {
-        // atualizar
+    const atualizar = (pessoa) => {
+        navigate(`/atualizar`, { state: { objeto: pessoa }, replace: true });
+
+
     }
+
 
     return (
         <>
@@ -49,7 +54,7 @@ function ListaPessoas() {
                                     <td hidden>{pessoa.id}</td>
                                     <td className={style.pTableBodyStrings}>{pessoa.nome}</td>
                                     <td>{util.formatarCPF(pessoa.cpf)}</td>
-                                    <td>{util.formatarData(pessoa.data_nascimento)}</td>
+                                    <td>{util.formatarData(pessoa.dataNascimento)}</td>
                                     <td>{util.formatarTelefone(pessoa.telefone)}</td>
                                     <td className={style.pTableBodyStrings}>{pessoa.endereco}</td>
                                     <td>{util.formatarAltura(pessoa.altura)}</td>
@@ -58,7 +63,7 @@ function ListaPessoas() {
                                         <FaTrashCan  onClick={() => alert('deletar')} className={style.pTableBodyButtons}/>
                                     </td>
                                     <td>
-                                        <AiFillEdit  onClick={() => alert('atualizar')} className={style.pTableBodyButtons}/>
+                                        <AiFillEdit  onClick={() => atualizar(pessoa)} className={style.pTableBodyButtons}/>
                                     </td>
                                 </tr>
                             ))}

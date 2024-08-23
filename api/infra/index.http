@@ -1,0 +1,16 @@
+GET http://localhost:3333/pessoas
+
+###
+
+PUT http://localhost:3333/atualizar?id=1
+Content-Type: application/json
+
+{
+    "nome": "Rodrigo Lucca Ferreira Souza Atualizado",
+    "cpf": "93414372988",
+    "dataNascimento": "2004-05-19",
+    "telefone": "83997887918",
+    "endereco": "Avenida Jurandir Ribeiro de Oliveira, 965",
+    "altura": "189",
+    "peso": "67"
+}
